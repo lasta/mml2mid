@@ -43,11 +43,13 @@ public class Main {
                 lines.add(line);
             }
         } catch (MalformedInputException e) {
-            System.out.println("バイナリファイルが入力されました。");
-            System.out.println("テキストファイルを指定してください。");
+            System.out.println("バイナリファイルが入力されました");
+            System.out.println("テキストファイルを指定してください");
             System.exit(1);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("存在しないファイルかディレクトリが指定されました");
+            System.out.println("正しいファイルを指定してください");
+            System.exit(1);
         }
         return lines;
     }
