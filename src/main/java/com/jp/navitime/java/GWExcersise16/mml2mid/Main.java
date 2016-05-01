@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.MalformedInputException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -41,6 +42,10 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 lines.add(line);
             }
+        } catch (MalformedInputException e) {
+            System.out.println("バイナリファイルが入力されました。");
+            System.out.println("テキストファイルを指定してください。");
+            System.exit(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
