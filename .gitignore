@@ -1,0 +1,43 @@
+/tmp/
+/bin/
+*.test
+
+# OSX generated files #
+.DS_Store
+.DS_Store?
+.Trashes
+Thumbs.db
+
+# Java
+#*.class # covered by /target/
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.project
+.classpath
+.settings
+
+# Idea
+/.idea/
+*.iml
+*.iws
+*.ipr
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
+
+# Maven
+target
+
+# Build
+out
+build
+bin
+
+# Other
+*.log
+*.swp
+*.bak
