@@ -1,12 +1,17 @@
 package com.jp.navitime.java.GWExcersise16.mml2mid;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
 import org.apache.commons.lang.StringUtils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
 
@@ -16,6 +21,30 @@ public class Main {
         final Path INPUT_FILE_PATH = Paths.get(arguments.get("Input"));
         final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
 
+        /* MMLファイルをListに変換 */
+        final List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
+        INPUT_MML.forEach(System.out::println);
+
+    }
+
+    /**
+     * 指定されたファイルの中身を取得する
+     *
+     * @param path 中身を取得するファイルのパス
+     * @return 取得したファイルの中身
+     */
+    private static List<String> loadFile(Path path) {
+        String line;
+        List<String> lines = Lists.newArrayList();
+
+        try (BufferedReader br = Files.newBufferedReader(path)) {
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines;
     }
 
     /**
