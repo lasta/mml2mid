@@ -1,4 +1,4 @@
-package com.jp.navitime.java.GWExcersise16.KanaTyper;
+package com.jp.navitime.java.GWExcersise16.mml2mid;
 
 import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
@@ -17,7 +17,7 @@ public class Main {
         System.out.println(OUTPUT_FILE_NAME);
     }
 
-    private static HashMap<String, String> getArguments(String[] args) {
+   private static HashMap<String, String> getArguments(String[] args) {
         HashMap<String, String> fileNames = Maps.newHashMap();
         Getopt options = new Getopt("Main", args, "i:o:");
         int optIterator;
