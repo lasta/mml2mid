@@ -4,6 +4,8 @@ import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
 import org.apache.commons.lang.StringUtils;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class Main {
@@ -11,11 +13,9 @@ public class Main {
     public static void main(String[] args) {
         /* 引数処理 */
         HashMap<String, String> arguments = getArguments(args);
-        final String INPUT_FILE_NAME = arguments.get("Input");
-        final String OUTPUT_FILE_NAME = arguments.get("Output");
+        final Path INPUT_FILE_PATH = Paths.get(arguments.get("Input"));
+        final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
 
-//        System.out.println(INPUT_FILE_NAME);
-//        System.out.println(OUTPUT_FILE_NAME);
     }
 
     /**
