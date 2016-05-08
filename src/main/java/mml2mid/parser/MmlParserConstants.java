@@ -29,7 +29,7 @@ public interface MmlParserConstants {
   /** RegularExpression Id. */
   int OctaveCommandToken = 13;
   /** RegularExpression Id. */
-  int ScaleCommandToken = 14;
+  int AccidentalsCommandToken = 14;
   /** RegularExpression Id. */
   int RestCommandToken = 15;
   /** RegularExpression Id. */
@@ -56,7 +56,7 @@ public interface MmlParserConstants {
     "\".\"",
     "\"l\"",
     "\"o\"",
-    "<ScaleCommandToken>",
+    "<AccidentalsCommandToken>",
     "\"r\"",
     "\"<\"",
     "\">\"",

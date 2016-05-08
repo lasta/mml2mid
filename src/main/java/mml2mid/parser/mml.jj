@@ -39,7 +39,7 @@ TOKEN:
         // Command
     |   <LengthCommandToken : "l">
     |   <OctaveCommandToken : "o">
-    |   <ScaleCommandToken : ["+","-"]>
+    |   <AccidentalsCommandToken : ["+","-"]>
     |   <RestCommandToken : "r">
     |   <IncreaseOctaveCommandToekn : "<">
     |   <DecreaseOctaveCommandToken : ">">
@@ -118,7 +118,7 @@ void SetScale()      :
 {}
 {
     <ScaleToken>
-    (<ScaleCommandToken>)?
+    (<AccidentalsCommandToken>)?
     (Length())?
     (<DotToken>)*
 }

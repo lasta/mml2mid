@@ -103,8 +103,8 @@ if (jjtc000) {
   final public void SetScale() throws ParseException {
     jj_consume_token(ScaleToken);
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-    case ScaleCommandToken:{
-      jj_consume_token(ScaleCommandToken);
+    case AccidentalsCommandToken:{
+      jj_consume_token(AccidentalsCommandToken);
       break;
       }
     default:
