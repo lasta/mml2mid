@@ -3,7 +3,6 @@ options{
     STATIC=false;
     MULTI=true;
     VISITOR=true;
-    NODE_EXTENDS="mml2mid.expr.BaseNode";
 }
 
 //パーサークラスの定義
