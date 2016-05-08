@@ -23,7 +23,7 @@ public class Main {
         final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
 
         /* MMLファイルをListに変換 */
-        final List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
+        fLengthinal List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
         INPUT_MML.forEach(System.out::println);
 
     }
