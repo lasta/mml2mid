@@ -98,24 +98,24 @@ void SetRest() :
 }
 
 void IncreaseOctave() :
-{}
+{ Token t;}
 {
-    <IncreaseOctaveCommandToekn>
+    t = <IncreaseOctaveCommandToekn> { jjtThis.nodeValue = t.image; }
 }
 
 void DecreaseOctave() :
-{}
+{ Token t;}
 {
-    <DecreaseOctaveCommandToken>
+    t = <DecreaseOctaveCommandToken> { jjtThis.nodeValue = t.image; }
 }
 
-void Length() #void:
-{}
+void Length() :
+{ Token t;}
 {
-    DecimalNumber()
+    t = DecimalNumber() { jjtThis.nodeValue = t.image; }
 }
 
-void DecimalNumber() #void:
+void DecimalNumber() :
 { Token t;}
 {
     t = <NonZeroNumberToken> (

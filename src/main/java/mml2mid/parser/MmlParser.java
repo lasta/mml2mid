@@ -194,9 +194,12 @@ if (jjtc000) {
   final public void IncreaseOctave() throws ParseException {/*@bgen(jjtree) IncreaseOctave */
   ASTIncreaseOctave jjtn000 = new ASTIncreaseOctave(JJTINCREASEOCTAVE);
   boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
+  jjtree.openNodeScope(jjtn000);Token t;
     try {
-      jj_consume_token(IncreaseOctaveCommandToekn);
+      t = jj_consume_token(IncreaseOctaveCommandToekn);
+jjtree.closeNodeScope(jjtn000, true);
+                                       jjtc000 = false;
+jjtn000.nodeValue = t.image;
     } finally {
 if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -207,9 +210,12 @@ if (jjtc000) {
   final public void DecreaseOctave() throws ParseException {/*@bgen(jjtree) DecreaseOctave */
   ASTDecreaseOctave jjtn000 = new ASTDecreaseOctave(JJTDECREASEOCTAVE);
   boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
+  jjtree.openNodeScope(jjtn000);Token t;
     try {
-      jj_consume_token(DecreaseOctaveCommandToken);
+      t = jj_consume_token(DecreaseOctaveCommandToken);
+jjtree.closeNodeScope(jjtn000, true);
+                                       jjtc000 = false;
+jjtn000.nodeValue = t.image;
     } finally {
 if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -217,40 +223,77 @@ if (jjtc000) {
     }
   }
 
-  final public void Length() throws ParseException {
-    DecimalNumber();
-  }
-
-  final public void DecimalNumber() throws ParseException {Token t;
-    t = jj_consume_token(NonZeroNumberToken);
-    label_4:
-    while (true) {
-      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-      case NumberZeroToken:
-      case NonZeroNumberToken:{
-        ;
-        break;
-        }
-      default:
-        jj_la1[7] = jj_gen;
-        break label_4;
+  final public void Length() throws ParseException {/*@bgen(jjtree) Length */
+  ASTLength jjtn000 = new ASTLength(JJTLENGTH);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);Token t;
+    try {
+      t = DecimalNumber();
+jjtree.closeNodeScope(jjtn000, true);
+                          jjtc000 = false;
+jjtn000.nodeValue = t.image;
+    } catch (Throwable jjte000) {
+if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
       }
-      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-      case NumberZeroToken:{
-        jj_consume_token(NumberZeroToken);
-        break;
-        }
-      case NonZeroNumberToken:{
-        jj_consume_token(NonZeroNumberToken);
-        break;
-        }
-      default:
-        jj_la1[8] = jj_gen;
-        jj_consume_token(-1);
-        throw new ParseException();
+      if (jjte000 instanceof RuntimeException) {
+        {if (true) throw (RuntimeException)jjte000;}
+      }
+      if (jjte000 instanceof ParseException) {
+        {if (true) throw (ParseException)jjte000;}
+      }
+      {if (true) throw (Error)jjte000;}
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
       }
     }
+  }
+
+  final public void DecimalNumber() throws ParseException {/*@bgen(jjtree) DecimalNumber */
+  ASTDecimalNumber jjtn000 = new ASTDecimalNumber(JJTDECIMALNUMBER);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);Token t;
+    try {
+      t = jj_consume_token(NonZeroNumberToken);
+      label_4:
+      while (true) {
+        switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+        case NumberZeroToken:
+        case NonZeroNumberToken:{
+          ;
+          break;
+          }
+        default:
+          jj_la1[7] = jj_gen;
+          break label_4;
+        }
+        switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+        case NumberZeroToken:{
+          jj_consume_token(NumberZeroToken);
+          break;
+          }
+        case NonZeroNumberToken:{
+          jj_consume_token(NonZeroNumberToken);
+          break;
+          }
+        default:
+          jj_la1[8] = jj_gen;
+          jj_consume_token(-1);
+          throw new ParseException();
+        }
+      }
+jjtree.closeNodeScope(jjtn000, true);
+         jjtc000 = false;
 jjtn000.nodeValue = t.image;
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
   }
 
   /** Generated Token Manager. */

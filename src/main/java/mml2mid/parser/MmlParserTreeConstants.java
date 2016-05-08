@@ -9,6 +9,8 @@ public interface MmlParserTreeConstants
   public int JJTSETREST = 3;
   public int JJTINCREASEOCTAVE = 4;
   public int JJTDECREASEOCTAVE = 5;
+  public int JJTLENGTH = 6;
+  public int JJTDECIMALNUMBER = 7;
 
 
   public String[] jjtNodeName = {
@@ -18,6 +20,8 @@ public interface MmlParserTreeConstants
     "SetRest",
     "IncreaseOctave",
     "DecreaseOctave",
+    "Length",
+    "DecimalNumber",
   };
 }
-/* JavaCC - OriginalChecksum=ed33e8205d40ebd0c9f49eafcd4cd79c (do not edit this line) */
+/* JavaCC - OriginalChecksum=0207e5d8156ff9d1553b5c9e1d53e10c (do not edit this line) */

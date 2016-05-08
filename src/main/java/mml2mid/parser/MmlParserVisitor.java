@@ -9,5 +9,7 @@ public interface MmlParserVisitor
   public Object visit(ASTSetRest node, Object data);
   public Object visit(ASTIncreaseOctave node, Object data);
   public Object visit(ASTDecreaseOctave node, Object data);
+  public Object visit(ASTLength node, Object data);
+  public Object visit(ASTDecimalNumber node, Object data);
 }
-/* JavaCC - OriginalChecksum=980f7c7ca312e035e02c8ec99a15d883 (do not edit this line) */
+/* JavaCC - OriginalChecksum=ff89712db5935d7522e464b2889124a5 (do not edit this line) */

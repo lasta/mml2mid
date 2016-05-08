@@ -6,6 +6,8 @@ import mml2mid.parser.*;
  * Created by lasta on 2016/05/09.
  */
 public class MmlParser implements MmlParserVisitor{
+    int currentOctave = 4;
+
     @Override
     public Object visit(SimpleNode node, Object data) {
         // ここには来ない
@@ -31,11 +33,25 @@ public class MmlParser implements MmlParserVisitor{
 
     @Override
     public Object visit(ASTIncreaseOctave node, Object data) {
+        currentOctave++;
         return null;
     }
 
     @Override
     public Object visit(ASTDecreaseOctave node, Object data) {
+        currentOctave--;
         return null;
+    }
+
+    @Override
+    public Object visit(ASTLength node, Object data) {
+        String value = node.nodeValue;
+        return Integer.valueOf(value);
+    }
+
+    @Override
+    public Object visit(ASTDecimalNumber node, Object data) {
+        String value = node.nodeValue;
+        return Integer.valueOf(value);
     }
 }

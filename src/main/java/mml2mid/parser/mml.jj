@@ -170,11 +170,16 @@ void IncreaseOctave() :
   ASTIncreaseOctave jjtn000 = new ASTIncreaseOctave(JJTINCREASEOCTAVE);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
-/*@egen*/}
+/*@egen*/ Token t;}
 {/*@bgen(jjtree) IncreaseOctave */
     try {
 /*@egen*/
-    <IncreaseOctaveCommandToekn>/*@bgen(jjtree)*/
+    t = <IncreaseOctaveCommandToekn>/*@bgen(jjtree)*/
+                                     {
+                                       jjtree.closeNodeScope(jjtn000, true);
+                                       jjtc000 = false;
+                                     }
+/*@egen*/ { jjtn000.nodeValue = t.image; }/*@bgen(jjtree)*/
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -188,11 +193,16 @@ void DecreaseOctave() :
   ASTDecreaseOctave jjtn000 = new ASTDecreaseOctave(JJTDECREASEOCTAVE);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
-/*@egen*/}
+/*@egen*/ Token t;}
 {/*@bgen(jjtree) DecreaseOctave */
     try {
 /*@egen*/
-    <DecreaseOctaveCommandToken>/*@bgen(jjtree)*/
+    t = <DecreaseOctaveCommandToken>/*@bgen(jjtree)*/
+                                     {
+                                       jjtree.closeNodeScope(jjtn000, true);
+                                       jjtc000 = false;
+                                     }
+/*@egen*/ { jjtn000.nodeValue = t.image; }/*@bgen(jjtree)*/
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -201,17 +211,65 @@ void DecreaseOctave() :
 /*@egen*/
 }
 
-void Length()      :
-{}
-{
-    DecimalNumber()
+void Length() :
+{/*@bgen(jjtree) Length */
+  ASTLength jjtn000 = new ASTLength(JJTLENGTH);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t;}
+{/*@bgen(jjtree) Length */
+    try {
+/*@egen*/
+    t = DecimalNumber()/*@bgen(jjtree)*/
+                        {
+                          jjtree.closeNodeScope(jjtn000, true);
+                          jjtc000 = false;
+                        }
+/*@egen*/ { jjtn000.nodeValue = t.image; }/*@bgen(jjtree)*/
+    } catch (Throwable jjte000) {
+      if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        throw (RuntimeException)jjte000;
+      }
+      if (jjte000 instanceof ParseException) {
+        throw (ParseException)jjte000;
+      }
+      throw (Error)jjte000;
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
+/*@egen*/
 }
 
-void DecimalNumber()      :
-{ Token t;}
-{
+void DecimalNumber() :
+{/*@bgen(jjtree) DecimalNumber */
+  ASTDecimalNumber jjtn000 = new ASTDecimalNumber(JJTDECIMALNUMBER);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t;}
+{/*@bgen(jjtree) DecimalNumber */
+    try {
+/*@egen*/
     t = <NonZeroNumberToken> (
           <NumberZeroToken>
         | <NonZeroNumberToken>
-    )* { jjtn000.nodeValue = t.image; }
+    )*/*@bgen(jjtree)*/
+       {
+         jjtree.closeNodeScope(jjtn000, true);
+         jjtc000 = false;
+       }
+/*@egen*/ { jjtn000.nodeValue = t.image; }/*@bgen(jjtree)*/
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
+/*@egen*/
 }
