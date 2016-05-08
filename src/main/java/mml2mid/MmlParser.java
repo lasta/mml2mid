@@ -1,4 +1,5 @@
 package mml2mid;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import mml2mid.parser.*;
 
 /**
@@ -7,9 +8,11 @@ import mml2mid.parser.*;
 public class MmlParser implements MmlParserVisitor{
     @Override
     public Object visit(SimpleNode node, Object data) {
+        // ここには来ない
         return null;
     }
 
+    @Ignore
     @Override
     public Object visit(ASTSetOctave node, Object data) {
         return null;
