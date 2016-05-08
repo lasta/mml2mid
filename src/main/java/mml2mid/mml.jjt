@@ -21,9 +21,21 @@ SKIP:
 }
 TOKEN:
 {
-        <PLUS : "+">
-    |   <MINUS: "-">
-    |   <INTEGER: (["0" - "9"])+>
+        // number
+        <NumberZeroToken : "0">
+    |   <NonZeroNumberToken : ["1" - "9"]>
+    |   <Hex10to15Token : ["a" - "f"]>
+    |   <HexNumberXToken : "x">
+
+        // scale
+    |   <OctaveToken : ["2" - "8"]>
+    |   <ScaleToken : ["a" - "g"]>
+    |   <DotToken : ".">
+
+        // Command
+    |   <LengthCommandToken : "l">
+    |   <OctaveCommandToken : "o">
+    |   <ScaleCommandToken : ["+","-"]>
 }
 
 //文法の定義

@@ -6,7 +6,7 @@ Command ::= SetLength | SetOctave | SetScale | SetRest // notes
     | IncreaseOctave | DecreaseOctave                   // change octave relatively
 
 SetLength ::= 'l' Length
-SetOctave ::= 'p' Octave
+SetOctave ::= 'o' Octave
 SetScale  ::=  Scale ('+' | '-')? Length? Dot*
 SetRest   ::= 'r' Length? Dot*
 IncreaseOctave ::= '<'
