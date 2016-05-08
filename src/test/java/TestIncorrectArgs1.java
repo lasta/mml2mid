@@ -1,5 +1,4 @@
-package com.jp.navitime.java.GWExcersise16.mml2mid;
-
+import com.jp.navitime.java.GWExcersise16.mml2mid.Main;
 import org.junit.Test;
 
 /**

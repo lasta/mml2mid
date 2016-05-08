@@ -1,13 +1,13 @@
 <project name="mml2mid" default="javacc" basedir=".">
 
     <!-- javaソースの出力先 -->
-    <property name="src" location="src/main/java/com/jp/navitime/java/GWExcersise16/mml2mid/parser"/>
+    <property name="src" location="src/main/java/parser"/>
 
     <!-- javacc.jarを置いているディレクトリ -->
     <property name="javacc.home" location="lib"/>
 
     <!-- jjtファイルの配置場所 -->
-    <property name="jjt.file" location="src/test/java/com/jp/navitime/java/GWExcersise16/mml2mid/test1.jjt"/>
+    <property name="jjt.file" location="src/test/java/test1.jjt"/>
     <!-- jjファイルの配置場所 -->
     <property name="jj.file" location="${src}/test1.jj"/>
 
