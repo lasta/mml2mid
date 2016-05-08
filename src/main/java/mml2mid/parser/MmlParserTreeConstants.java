@@ -3,17 +3,19 @@ package mml2mid.parser;
 
 public interface MmlParserTreeConstants
 {
-  public int JJTVOID = 0;
-  public int JJTSETOCTAVE = 1;
-  public int JJTSETSCALE = 2;
-  public int JJTSETREST = 3;
-  public int JJTINCREASEOCTAVE = 4;
-  public int JJTDECREASEOCTAVE = 5;
-  public int JJTLENGTH = 6;
-  public int JJTDECIMALNUMBER = 7;
+  public int JJTMMLCOMMANDS = 0;
+  public int JJTVOID = 1;
+  public int JJTSETOCTAVE = 2;
+  public int JJTSETSCALE = 3;
+  public int JJTSETREST = 4;
+  public int JJTINCREASEOCTAVE = 5;
+  public int JJTDECREASEOCTAVE = 6;
+  public int JJTLENGTH = 7;
+  public int JJTDECIMALNUMBER = 8;
 
 
   public String[] jjtNodeName = {
+    "MMLCommands",
     "void",
     "SetOctave",
     "SetScale",
@@ -24,4 +26,4 @@ public interface MmlParserTreeConstants
     "DecimalNumber",
   };
 }
-/* JavaCC - OriginalChecksum=0207e5d8156ff9d1553b5c9e1d53e10c (do not edit this line) */
+/* JavaCC - OriginalChecksum=1b2cafa051f94ec622aba0c50a172f05 (do not edit this line) */

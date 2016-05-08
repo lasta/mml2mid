@@ -5,30 +5,53 @@ public class MmlParser/*@bgen(jjtree)*/implements MmlParserTreeConstants, MmlPar
   protected JJTMmlParserState jjtree = new JJTMmlParserState();
 
 //文法の定義
-  final public ASTStart Start() throws ParseException {
-    MMLCommands();
-{if ("" != null) return jjtn000;}
-    throw new Error("Missing return statement in function");
-  }
-
-  final public void MMLCommands() throws ParseException {
-    label_1:
-    while (true) {
-      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-      case ScaleToken:
-      case LengthCommandToken:
-      case OctaveCommandToken:
-      case RestCommandToken:
-      case IncreaseOctaveCommandToekn:
-      case DecreaseOctaveCommandToken:{
-        ;
-        break;
+// ASTStart Start() #void:
+// {}
+// {
+//     MMLCommands() { return jjtThis;}
+// }
+  final public 
+void MMLCommands() throws ParseException {/*@bgen(jjtree) MMLCommands */
+  ASTMMLCommands jjtn000 = new ASTMMLCommands(JJTMMLCOMMANDS);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      label_1:
+      while (true) {
+        switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+        case ScaleToken:
+        case LengthCommandToken:
+        case OctaveCommandToken:
+        case RestCommandToken:
+        case IncreaseOctaveCommandToekn:
+        case DecreaseOctaveCommandToken:{
+          ;
+          break;
+          }
+        default:
+          jj_la1[0] = jj_gen;
+          break label_1;
         }
-      default:
-        jj_la1[0] = jj_gen;
-        break label_1;
+        Command();
       }
-      Command();
+    } catch (Throwable jjte000) {
+if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        {if (true) throw (RuntimeException)jjte000;}
+      }
+      if (jjte000 instanceof ParseException) {
+        {if (true) throw (ParseException)jjte000;}
+      }
+      {if (true) throw (Error)jjte000;}
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
     }
   }
 
@@ -253,7 +276,7 @@ if (jjtc000) {
     }
   }
 
-  final public void DecimalNumber() throws ParseException {/*@bgen(jjtree) DecimalNumber */
+  final public Token DecimalNumber() throws ParseException {/*@bgen(jjtree) DecimalNumber */
   ASTDecimalNumber jjtn000 = new ASTDecimalNumber(JJTDECIMALNUMBER);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);Token t;
@@ -294,6 +317,7 @@ if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
       }
     }
+    return t;
   }
 
   /** Generated Token Manager. */

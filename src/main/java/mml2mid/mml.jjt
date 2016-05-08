@@ -43,13 +43,13 @@ TOKEN:
 }
 
 //文法の定義
-ASTStart Start() #void:
-{}
-{
-    MMLCommands() { return jjtThis;}
-}
+// ASTStart Start() #void:
+// {}
+// {
+//     MMLCommands() { return jjtThis;}
+// }
 
-void MMLCommands() #void:
+void MMLCommands() :
 {}
 {
     (Command())*

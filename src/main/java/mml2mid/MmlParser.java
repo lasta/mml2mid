@@ -5,12 +5,20 @@ import mml2mid.parser.*;
 /**
  * Created by lasta on 2016/05/09.
  */
-public class MmlParser implements MmlParserVisitor{
+public class MmlParser implements MmlParserVisitor {
     int currentOctave = 4;
+
+    public MmlParser(String line) {
+    }
 
     @Override
     public Object visit(SimpleNode node, Object data) {
         // ここには来ない
+        return null;
+    }
+
+    @Override
+    public Object visit(ASTMMLCommands node, Object data) {
         return null;
     }
 

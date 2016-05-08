@@ -24,7 +24,10 @@ public class Main {
 
         /* MMLファイルをListに変換 */
         List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
-        INPUT_MML.forEach(System.out::println);
+        for(String line : INPUT_MML) {
+            MmlParser mmlParser = new MmlParser(line);
+        }
+
 
     }
 
