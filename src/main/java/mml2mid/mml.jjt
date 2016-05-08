@@ -3,6 +3,7 @@ options{
     STATIC=false;
     MULTI=true;
     VISITOR=true;
+    NODE_EXTENDS="mml2mid.expr.BaseNode";
     UNICODE_INPUT=true;
 }
 
@@ -80,7 +81,7 @@ void SetOctave() :
 }
 
 void SetScale() :
-{}
+{ }
 {
     <ScaleToken>
     (<AccidentalsCommandToken>)?
@@ -115,10 +116,10 @@ void Length() #void:
 }
 
 void DecimalNumber() #void:
-{}
+{ Token t;}
 {
-    <NonZeroNumberToken> (
+    t = <NonZeroNumberToken> (
           <NumberZeroToken>
         | <NonZeroNumberToken>
-    )*
+    )* { jjtThis.nodeValue = t.image; }
 }

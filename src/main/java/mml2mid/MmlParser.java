@@ -15,6 +15,7 @@ public class MmlParser implements MmlParserVisitor{
     @Ignore
     @Override
     public Object visit(ASTSetOctave node, Object data) {
+        char scale = (char)node.jjtGetChild(0).jjtAccept(this, null);
         return null;
     }
 

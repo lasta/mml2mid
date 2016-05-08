@@ -4,6 +4,7 @@ options{
     STATIC=false;
                
                  
+                                         
     UNICODE_INPUT=true;
 }
 
@@ -100,7 +101,7 @@ void SetScale() :
   ASTSetScale jjtn000 = new ASTSetScale(JJTSETSCALE);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
-/*@egen*/}
+/*@egen*/ }
 {/*@bgen(jjtree) SetScale */
     try {
 /*@egen*/
@@ -207,10 +208,10 @@ void Length()      :
 }
 
 void DecimalNumber()      :
-{}
+{ Token t;}
 {
-    <NonZeroNumberToken> (
+    t = <NonZeroNumberToken> (
           <NumberZeroToken>
         | <NonZeroNumberToken>
-    )*
+    )* { jjtn000.nodeValue = t.image; }
 }

@@ -221,8 +221,8 @@ if (jjtc000) {
     DecimalNumber();
   }
 
-  final public void DecimalNumber() throws ParseException {
-    jj_consume_token(NonZeroNumberToken);
+  final public void DecimalNumber() throws ParseException {Token t;
+    t = jj_consume_token(NonZeroNumberToken);
     label_4:
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
@@ -250,6 +250,7 @@ if (jjtc000) {
         throw new ParseException();
       }
     }
+jjtn000.nodeValue = t.image;
   }
 
   /** Generated Token Manager. */
