@@ -1,0 +1,42 @@
+/** オプション */
+options {
+    /* parserをfor文などで繰り返し使うならfalseにする */
+    STATIC = false;
+}
+
+/** Parserクラスの定義 */
+PARSER_BEGIN(MmlParser)
+package parser;
+public class MmlParser {
+    /* ここに,普通のJavaクラスのようにメソッドを定義できるっぽい */
+}
+PARSER_END(MmlParser)
+/** ここまでがParserクラスの定義 */
+/** 以下は文法の定義 */
+
+/** 無視する文字を定義 */
+SKIP:
+{
+    " " | "\r" | "\t" | "\n"
+}
+
+/** 出現するトークンを定義 */
+TOKEN:
+{
+        <INTEGER: (["0"-"9"])>
+}
+
+/** Parserの実行
+ *  このメソッドをMain.javaから呼び出す
+ */
+void doParse():
+{
+    /* ここで使う変数を宣言 */
+    Token integer;
+}
+{
+    /* 入力された文字を表示 */
+    integer = <INTEGER> {
+        System.out.println("inputted: "+integer.image);
+    }
+}

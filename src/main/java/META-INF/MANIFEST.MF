@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: com.jp.navitime.java.GWExcersise16.mml2mid.Main
-
