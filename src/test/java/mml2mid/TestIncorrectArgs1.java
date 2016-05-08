@@ -1,3 +1,6 @@
+package mml2mid;
+
+import mml2mid.Main;
 import org.junit.Test;
 
 /**
