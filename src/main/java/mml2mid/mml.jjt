@@ -32,6 +32,10 @@ TOKEN:
     |   <ScaleToken : ["a" - "g"]>
     |   <DotToken : ".">
 
+        // Accidentals
+    |   <SharpToken : "#">
+    |   <FlatToken : "b">
+
         // Command
     |   <LengthCommandToken : "l">
     |   <OctaveCommandToken : "o">
