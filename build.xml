@@ -1,27 +1,22 @@
-<project name="mml2mid" default="javacc" basedir=".">
-
-    <!-- javaソースの出力先 -->
-    <property name="src" location="src/main/java/parser"/>
-
-    <!-- javacc.jarを置いているディレクトリ -->
-    <property name="javacc.home" location="lib"/>
-
-    <!-- jjtファイルの配置場所 -->
-    <property name="jjt.file" location="src/test/java/test1.jjt"/>
-    <!-- jjファイルの配置場所 -->
-    <property name="jj.file" location="${src}/test1.jj"/>
-
-    <target name="javacc">
-        <delete dir="${src}" includes="*.*"/>
-
-        <!-- jjtreeタスクを実行して、jjtからjjファイルとjavaファイルを作成 -->
-        <jjtree target="${jjt.file}"
-                javacchome="${javacc.home}"
-                outputdirectory="${src}"/>
-
-        <!-- jjファイルからjavaファイルを作成 -->
-        <javacc target="${jj.file}"
-                javacchome="${javacc.home}"
-                outputdirectory="${src}" />
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mml2mid" default="default" basedir=".">
+    <target name="default"></target>
+    <target name="init">
+        <property file="build.properties"/>
+    </target>
+    <target name="cc" depends="init">
+        <delete dir="${build.parser.dir}"
+                includes="*.*"/>
+        <jjtree target="${src.jjt.file}"
+                outputdirectory="${build.parser.dir}"
+                javacchome="${javacc.dir}"/>
+        <javacc target="${build.jj.file}"
+                javacchome="${javacc.dir}"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac destdir="${build.classes.dir}" srcdir="${src.dir}"
+               debug="true">
+            <include name="**/*.java"/>
+        </javac>
     </target>
 </project>
