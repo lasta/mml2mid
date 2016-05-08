@@ -4,19 +4,19 @@ options{
     STATIC=false;
                
                  
-                                          
+                                         
 }
 
 //\u30d1\u30fc\u30b5\u30fc\u30af\u30e9\u30b9\u306e\u5b9a\u7fa9
-PARSER_BEGIN(ExprParser)
-package codezine.expr.parser;
-public class ExprParser/*@bgen(jjtree)*/implements ExprParserTreeConstants/*@egen*/{/*@bgen(jjtree)*/
-  protected JJTExprParserState jjtree = new JJTExprParserState();
+PARSER_BEGIN(MmlParser)
+package mml2mid.parser;
+public class MmlParser/*@bgen(jjtree)*/implements MmlParserTreeConstants/*@egen*/{/*@bgen(jjtree)*/
+  protected JJTMmlParserState jjtree = new JJTMmlParserState();
 
 /*@egen*/
 
 }
-PARSER_END(ExprParser)
+PARSER_END(MmlParser)
 
 //\u30c8\u30fc\u30af\u30f3\u306e\u5b9a\u7fa9
 SKIP:
@@ -25,9 +25,24 @@ SKIP:
 }
 TOKEN:
 {
-        <PLUS : "+">
-    |   <MINUS: "-">
-    |   <INTEGER: (["0" - "9"])+>
+        // number
+        <NumberZeroToken : "0">
+    |   <NonZeroNumberToken : ["1" - "9"]>
+    |   <Hex10to15Token : ["a" - "f"]>
+    |   <HexNumberPrefixToken : "0x">
+
+        // scale
+    |   <OctaveToken : ["2" - "8"]>
+    |   <ScaleToken : ["a" - "g"]>
+    |   <DotToken : ".">
+
+        // Command
+    |   <LengthCommandToken : "l">
+    |   <OctaveCommandToken : "o">
+    |   <ScaleCommandToken : ["+","-"]>
+    |   <RestCommandToken : "r">
+    |   <IncreaseOctaveCommandToekn : "<">
+    |   <DecreaseOctaveCommandToken : ">">
 }
 
 //\u6587\u6cd5\u306e\u5b9a\u7fa9
@@ -40,11 +55,11 @@ ASTStart Start():
 {/*@bgen(jjtree) Start */
     try {
 /*@egen*/
-    AddExpr()/*@bgen(jjtree)*/
-              {
-                jjtree.closeNodeScope(jjtn000, true);
-                jjtc000 = false;
-              }
+    MMLCommands()/*@bgen(jjtree)*/
+                  {
+                    jjtree.closeNodeScope(jjtn000, true);
+                    jjtc000 = false;
+                  }
 /*@egen*/ { return jjtn000;}/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
@@ -68,87 +83,77 @@ ASTStart Start():
 /*@egen*/
 }
 
-void AddExpr()      :
+void MMLCommands()      :
 {}
 {
-    Integer() (
-           <PLUS>/*@bgen(jjtree) #Add( 2) */
-                   {
-                     ASTAdd jjtn001 = new ASTAdd(JJTADD);
-                     boolean jjtc001 = true;
-                     jjtree.openNodeScope(jjtn001);
-                   }
-                   try {
-/*@egen*/  Integer()/*@bgen(jjtree)*/
-                   } catch (Throwable jjte001) {
-                     if (jjtc001) {
-                       jjtree.clearNodeScope(jjtn001);
-                       jjtc001 = false;
-                     } else {
-                       jjtree.popNode();
-                     }
-                     if (jjte001 instanceof RuntimeException) {
-                       throw (RuntimeException)jjte001;
-                     }
-                     if (jjte001 instanceof ParseException) {
-                       throw (ParseException)jjte001;
-                     }
-                     throw (Error)jjte001;
-                   } finally {
-                     if (jjtc001) {
-                       jjtree.closeNodeScope(jjtn001,  2);
-                     }
-                   }
-/*@egen*/        
-        |  <MINUS>/*@bgen(jjtree) #Sub( 2) */
-                   {
-                     ASTSub jjtn002 = new ASTSub(JJTSUB);
-                     boolean jjtc002 = true;
-                     jjtree.openNodeScope(jjtn002);
-                   }
-                   try {
-/*@egen*/ Integer()/*@bgen(jjtree)*/
-                   } catch (Throwable jjte002) {
-                     if (jjtc002) {
-                       jjtree.clearNodeScope(jjtn002);
-                       jjtc002 = false;
-                     } else {
-                       jjtree.popNode();
-                     }
-                     if (jjte002 instanceof RuntimeException) {
-                       throw (RuntimeException)jjte002;
-                     }
-                     if (jjte002 instanceof ParseException) {
-                       throw (ParseException)jjte002;
-                     }
-                     throw (Error)jjte002;
-                   } finally {
-                     if (jjtc002) {
-                       jjtree.closeNodeScope(jjtn002,  2);
-                     }
-                   }
-/*@egen*/         ) *
+    (Command())*
 }
 
-void Integer():
-{/*@bgen(jjtree) Integer */
-  ASTInteger jjtn000 = new ASTInteger(JJTINTEGER);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ Token t;}
-{/*@bgen(jjtree) Integer */
-    try {
-/*@egen*/
-    t = <INTEGER>/*@bgen(jjtree)*/
-                  {
-                    jjtree.closeNodeScope(jjtn000, true);
-                    jjtc000 = false;
-                  }
-/*@egen*/ { jjtn000.nodeValue = t.image;}/*@bgen(jjtree)*/
-    } finally {
-      if (jjtc000) {
-        jjtree.closeNodeScope(jjtn000, true);
-      }
-    }
-/*@egen*/
+void Command()      :
+{}
+{
+    // notes
+    SetLength()
+    | SetOctave()
+    | SetScale()
+    | SetRest()
+    // change octave
+    | IncreaseOctave()
+    | DecreaseOctave()
+}
+
+void SetLength()      :
+{}
+{
+    <LengthCommandToken> Length()
+}
+
+void SetOctave()      :
+{}
+{
+    <OctaveCommandToken> <OctaveToken>
+}
+
+void SetScale()      :
+{}
+{
+    <ScaleToken>
+    (<ScaleCommandToken>)?
+    (Length())?
+    (<DotToken>)*
+}
+
+void SetRest()      :
+{}
+{
+    <RestCommandToken>
+    (Length())?
+    (<DotToken>)*
+}
+
+void IncreaseOctave()      :
+{}
+{
+    <IncreaseOctaveCommandToekn>
+}
+
+void DecreaseOctave()      :
+{}
+{
+    <DecreaseOctaveCommandToken>
+}
+
+void Length()      :
+{}
+{
+    DecimalNumber()
+}
+
+void DecimalNumber()      :
+{}
+{
+    <NonZeroNumberToken> (
+          <NumberZeroToken>
+        | <NonZeroNumberToken>
+    )*
 }

@@ -3,16 +3,16 @@ options{
     STATIC=false;
     MULTI=true;
     VISITOR=true;
-    NODE_EXTENDS="codezine.expr.BaseNode";
+    NODE_EXTENDS="mml2mid.expr.BaseNode";
 }
 
 //パーサークラスの定義
-PARSER_BEGIN(ExprParser)
-package codezine.expr.parser;
-public class ExprParser{
+PARSER_BEGIN(MmlParser)
+package mml2mid.parser;
+public class MmlParser{
 
 }
-PARSER_END(ExprParser)
+PARSER_END(MmlParser)
 
 //トークンの定義
 SKIP:
@@ -25,7 +25,7 @@ TOKEN:
         <NumberZeroToken : "0">
     |   <NonZeroNumberToken : ["1" - "9"]>
     |   <Hex10to15Token : ["a" - "f"]>
-    |   <HexNumberXToken : "x">
+    |   <HexNumberPrefixToken : "0x">
 
         // scale
     |   <OctaveToken : ["2" - "8"]>
@@ -45,19 +45,80 @@ TOKEN:
 ASTStart Start():
 {}
 {
-    AddExpr() { return jjtThis;}
+    MMLCommands() { return jjtThis;}
 }
 
-void AddExpr() #void:
+void MMLCommands() #void:
 {}
 {
-    Integer() (
-           <PLUS>  Integer() #Add(2)
-        |  <MINUS> Integer() #Sub(2) ) *
+    (Command())*
 }
 
-void Integer():
-{ Token t;}
+void Command() #void:
+{}
 {
-    t = <INTEGER> { jjtThis.nodeValue = t.image;}
+    // notes
+    SetLength()
+    | SetOctave()
+    | SetScale()
+    | SetRest()
+    // change octave
+    | IncreaseOctave()
+    | DecreaseOctave()
+}
+
+void SetLength() #void:
+{}
+{
+    <LengthCommandToken> Length()
+}
+
+void SetOctave() #void:
+{}
+{
+    <OctaveCommandToken> <OctaveToken>
+}
+
+void SetScale() #void:
+{}
+{
+    <ScaleToken>
+    (<ScaleCommandToken>)?
+    (Length())?
+    (<DotToken>)*
+}
+
+void SetRest() #void:
+{}
+{
+    <RestCommandToken>
+    (Length())?
+    (<DotToken>)*
+}
+
+void IncreaseOctave() #void:
+{}
+{
+    <IncreaseOctaveCommandToekn>
+}
+
+void DecreaseOctave() #void:
+{}
+{
+    <DecreaseOctaveCommandToken>
+}
+
+void Length() #void:
+{}
+{
+    DecimalNumber()
+}
+
+void DecimalNumber() #void:
+{}
+{
+    <NonZeroNumberToken> (
+          <NumberZeroToken>
+        | <NonZeroNumberToken>
+    )*
 }
