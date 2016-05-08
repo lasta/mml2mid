@@ -7,8 +7,7 @@ import mml2mid.parser.ParseException;
 import mml2mid.parser.TokenMgrError;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.MalformedInputException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,12 +21,14 @@ public class Main {
 
     public static void main(String[] args) {
         /* 引数処理 */
-        HashMap<String, String> arguments = getArguments(args);
-        final Path INPUT_FILE_PATH = Paths.get(arguments.get("Input"));
-        final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
+//        HashMap<String, String> arguments = getArguments(args);
+//        final Path INPUT_FILE_PATH = Paths.get(arguments.get("Input"));
+//        final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
+
+        load();
 
         /* MMLファイルをListに変換 */
-        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
+//        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
     }
 
     /**
@@ -62,6 +63,43 @@ public class Main {
             System.exit(1);
         }
         return lines;
+    }
+
+    private static void load() {
+        String line;
+        List<String> lines = Lists.newArrayList();
+        String inputStr;
+        while(true) {
+            inputStr = null;
+            System.out.print("> ");
+            try {
+                inputStr = new BufferedReader(new InputStreamReader(System.in)).readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (inputStr.matches("exit" + ".*")) {
+                System.out.println("shutdown program");
+                break ;
+            }
+            else {
+                try {
+                    /* paeserの引数はInputStream型なので,String型から戻す */
+                    InputStream is = null;
+                    try {
+                        is = new ByteArrayInputStream(inputStr.getBytes("utf-8"));
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    MmlParser mmlParser = new MmlParser(is);
+                    mmlParser.MMLCommands();
+                } catch (TokenMgrError ex) {
+                    System.out.println("字句解析エラー:" + ex.getMessage());
+                } catch (ParseException ex) {
+                    System.out.println("構文解析エラー:" + ex.getMessage());
+                }
+            }
+        }
     }
 
     /**
