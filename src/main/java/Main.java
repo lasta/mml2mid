@@ -1,5 +1,3 @@
-package com.jp.navitime.java.GWExcersise16.mml2mid;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
