@@ -3,6 +3,7 @@ options{
     STATIC=false;
     MULTI=true;
     VISITOR=true;
+    UNICODE_INPUT=true;
 }
 
 //パーサークラスの定義
@@ -41,7 +42,7 @@ TOKEN:
 }
 
 //文法の定義
-ASTStart Start():
+ASTStart Start() #void:
 {}
 {
     MMLCommands() { return jjtThis;}
@@ -72,13 +73,13 @@ void SetLength() #void:
     <LengthCommandToken> Length()
 }
 
-void SetOctave() #void:
+void SetOctave() :
 {}
 {
     <OctaveCommandToken> <OctaveToken>
 }
 
-void SetScale() #void:
+void SetScale() :
 {}
 {
     <ScaleToken>
@@ -87,7 +88,7 @@ void SetScale() #void:
     (<DotToken>)*
 }
 
-void SetRest() #void:
+void SetRest() :
 {}
 {
     <RestCommandToken>
@@ -95,13 +96,13 @@ void SetRest() #void:
     (<DotToken>)*
 }
 
-void IncreaseOctave() #void:
+void IncreaseOctave() :
 {}
 {
     <IncreaseOctaveCommandToekn>
 }
 
-void DecreaseOctave() #void:
+void DecreaseOctave() :
 {}
 {
     <DecreaseOctaveCommandToken>

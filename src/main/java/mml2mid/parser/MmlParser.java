@@ -5,34 +5,9 @@ public class MmlParser/*@bgen(jjtree)*/implements MmlParserTreeConstants, MmlPar
   protected JJTMmlParserState jjtree = new JJTMmlParserState();
 
 //文法の定義
-  final public ASTStart Start() throws ParseException {/*@bgen(jjtree) Start */
-  ASTStart jjtn000 = new ASTStart(JJTSTART);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-    try {
-      MMLCommands();
-jjtree.closeNodeScope(jjtn000, true);
-                    jjtc000 = false;
+  final public ASTStart Start() throws ParseException {
+    MMLCommands();
 {if ("" != null) return jjtn000;}
-    } catch (Throwable jjte000) {
-if (jjtc000) {
-        jjtree.clearNodeScope(jjtn000);
-        jjtc000 = false;
-      } else {
-        jjtree.popNode();
-      }
-      if (jjte000 instanceof RuntimeException) {
-        {if (true) throw (RuntimeException)jjte000;}
-      }
-      if (jjte000 instanceof ParseException) {
-        {if (true) throw (ParseException)jjte000;}
-      }
-      {if (true) throw (Error)jjte000;}
-    } finally {
-if (jjtc000) {
-        jjtree.closeNodeScope(jjtn000, true);
-      }
-    }
     throw new Error("Missing return statement in function");
   }
 
@@ -95,78 +70,151 @@ if (jjtc000) {
     Length();
   }
 
-  final public void SetOctave() throws ParseException {
-    jj_consume_token(OctaveCommandToken);
-    jj_consume_token(OctaveToken);
+  final public void SetOctave() throws ParseException {/*@bgen(jjtree) SetOctave */
+  ASTSetOctave jjtn000 = new ASTSetOctave(JJTSETOCTAVE);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      jj_consume_token(OctaveCommandToken);
+      jj_consume_token(OctaveToken);
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
   }
 
-  final public void SetScale() throws ParseException {
-    jj_consume_token(ScaleToken);
-    switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-    case AccidentalsCommandToken:{
-      jj_consume_token(AccidentalsCommandToken);
-      break;
-      }
-    default:
-      jj_la1[2] = jj_gen;
-      ;
-    }
-    switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-    case NonZeroNumberToken:{
-      Length();
-      break;
-      }
-    default:
-      jj_la1[3] = jj_gen;
-      ;
-    }
-    label_2:
-    while (true) {
+  final public void SetScale() throws ParseException {/*@bgen(jjtree) SetScale */
+  ASTSetScale jjtn000 = new ASTSetScale(JJTSETSCALE);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      jj_consume_token(ScaleToken);
       switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-      case DotToken:{
-        ;
+      case AccidentalsCommandToken:{
+        jj_consume_token(AccidentalsCommandToken);
         break;
         }
       default:
-        jj_la1[4] = jj_gen;
-        break label_2;
-      }
-      jj_consume_token(DotToken);
-    }
-  }
-
-  final public void SetRest() throws ParseException {
-    jj_consume_token(RestCommandToken);
-    switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-    case NonZeroNumberToken:{
-      Length();
-      break;
-      }
-    default:
-      jj_la1[5] = jj_gen;
-      ;
-    }
-    label_3:
-    while (true) {
-      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
-      case DotToken:{
+        jj_la1[2] = jj_gen;
         ;
+      }
+      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+      case NonZeroNumberToken:{
+        Length();
         break;
         }
       default:
-        jj_la1[6] = jj_gen;
-        break label_3;
+        jj_la1[3] = jj_gen;
+        ;
       }
-      jj_consume_token(DotToken);
+      label_2:
+      while (true) {
+        switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+        case DotToken:{
+          ;
+          break;
+          }
+        default:
+          jj_la1[4] = jj_gen;
+          break label_2;
+        }
+        jj_consume_token(DotToken);
+      }
+    } catch (Throwable jjte000) {
+if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        {if (true) throw (RuntimeException)jjte000;}
+      }
+      if (jjte000 instanceof ParseException) {
+        {if (true) throw (ParseException)jjte000;}
+      }
+      {if (true) throw (Error)jjte000;}
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
     }
   }
 
-  final public void IncreaseOctave() throws ParseException {
-    jj_consume_token(IncreaseOctaveCommandToekn);
+  final public void SetRest() throws ParseException {/*@bgen(jjtree) SetRest */
+  ASTSetRest jjtn000 = new ASTSetRest(JJTSETREST);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      jj_consume_token(RestCommandToken);
+      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+      case NonZeroNumberToken:{
+        Length();
+        break;
+        }
+      default:
+        jj_la1[5] = jj_gen;
+        ;
+      }
+      label_3:
+      while (true) {
+        switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+        case DotToken:{
+          ;
+          break;
+          }
+        default:
+          jj_la1[6] = jj_gen;
+          break label_3;
+        }
+        jj_consume_token(DotToken);
+      }
+    } catch (Throwable jjte000) {
+if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        {if (true) throw (RuntimeException)jjte000;}
+      }
+      if (jjte000 instanceof ParseException) {
+        {if (true) throw (ParseException)jjte000;}
+      }
+      {if (true) throw (Error)jjte000;}
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
   }
 
-  final public void DecreaseOctave() throws ParseException {
-    jj_consume_token(DecreaseOctaveCommandToken);
+  final public void IncreaseOctave() throws ParseException {/*@bgen(jjtree) IncreaseOctave */
+  ASTIncreaseOctave jjtn000 = new ASTIncreaseOctave(JJTINCREASEOCTAVE);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      jj_consume_token(IncreaseOctaveCommandToekn);
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
+  }
+
+  final public void DecreaseOctave() throws ParseException {/*@bgen(jjtree) DecreaseOctave */
+  ASTDecreaseOctave jjtn000 = new ASTDecreaseOctave(JJTDECREASEOCTAVE);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+    try {
+      jj_consume_token(DecreaseOctaveCommandToken);
+    } finally {
+if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
   }
 
   final public void Length() throws ParseException {

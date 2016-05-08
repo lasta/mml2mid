@@ -3,13 +3,21 @@ package mml2mid.parser;
 
 public interface MmlParserTreeConstants
 {
-  public int JJTSTART = 0;
-  public int JJTVOID = 1;
+  public int JJTVOID = 0;
+  public int JJTSETOCTAVE = 1;
+  public int JJTSETSCALE = 2;
+  public int JJTSETREST = 3;
+  public int JJTINCREASEOCTAVE = 4;
+  public int JJTDECREASEOCTAVE = 5;
 
 
   public String[] jjtNodeName = {
-    "Start",
     "void",
+    "SetOctave",
+    "SetScale",
+    "SetRest",
+    "IncreaseOctave",
+    "DecreaseOctave",
   };
 }
-/* JavaCC - OriginalChecksum=e0f6ceba81e05eec6026988f5ebfbd6d (do not edit this line) */
+/* JavaCC - OriginalChecksum=ed33e8205d40ebd0c9f49eafcd4cd79c (do not edit this line) */

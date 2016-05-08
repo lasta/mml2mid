@@ -9,8 +9,20 @@ public class MmlParserDefaultVisitor implements MmlParserVisitor{
   public Object visit(SimpleNode node, Object data){
     return defaultVisit(node, data);
   }
-  public Object visit(ASTStart node, Object data){
+  public Object visit(ASTSetOctave node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTSetScale node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTSetRest node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTIncreaseOctave node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTDecreaseOctave node, Object data){
     return defaultVisit(node, data);
   }
 }
-/* JavaCC - OriginalChecksum=b045880617cb012ee2b0c3ef8f583620 (do not edit this line) */
+/* JavaCC - OriginalChecksum=1b2feb97e6278ef4c725435747dc1e31 (do not edit this line) */

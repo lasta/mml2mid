@@ -4,6 +4,10 @@ package mml2mid.parser;
 public interface MmlParserVisitor
 {
   public Object visit(SimpleNode node, Object data);
-  public Object visit(ASTStart node, Object data);
+  public Object visit(ASTSetOctave node, Object data);
+  public Object visit(ASTSetScale node, Object data);
+  public Object visit(ASTSetRest node, Object data);
+  public Object visit(ASTIncreaseOctave node, Object data);
+  public Object visit(ASTDecreaseOctave node, Object data);
 }
-/* JavaCC - OriginalChecksum=f89edf81f61246f4574a31e7ed731894 (do not edit this line) */
+/* JavaCC - OriginalChecksum=980f7c7ca312e035e02c8ec99a15d883 (do not edit this line) */
