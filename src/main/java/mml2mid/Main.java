@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
 import mml2mid.parser.ParseException;
+import mml2mid.parser.TokenMgrError;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedReader;
@@ -26,7 +27,7 @@ public class Main {
         final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
 
         /* MMLファイルをListに変換 */
-//        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
+        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
     }
 
     /**
@@ -42,9 +43,13 @@ public class Main {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             while (br.readLine() != null) {
                 MmlParser mmlParser = new MmlParser(br);
-                mmlParser.Command();
+                mmlParser.MMLCommands();
             }
+        } catch (TokenMgrError e) {
+            System.out.println("字句解析エラー:" + e.getMessage());
+            e.printStackTrace();
         } catch (ParseException e) {
+            System.out.println("構文解析エラー:" + e.getMessage());
             e.printStackTrace();
         } catch (MalformedInputException e) {
             System.out.println("バイナリファイルが入力されました");
@@ -53,6 +58,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("存在しないファイルかディレクトリが指定されました");
             System.out.println("正しいファイルを指定してください");
+            e.printStackTrace();
             System.exit(1);
         }
         return lines;

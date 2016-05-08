@@ -14,7 +14,7 @@ public class TestCorrectArgs {
 
     @Test
     public void CorrectArgs1() throws Exception {
-        final String[] CmdArgs = {"-i", "hoge.mml", "-o", "hoge.mid"};
+        final String[] CmdArgs = {"-i", "test.mml", "-o", "test.mid"};
         Main.main(CmdArgs);
     }
 }
