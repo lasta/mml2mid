@@ -123,3 +123,9 @@ void DecimalNumber() :
         | <NonZeroNumberToken>
     )* { jjtThis.nodeValue = t.image; }
 }
+
+void HexNumber() :
+{}
+{
+    <HexNumberPrefix> (<NumberZeroToken> | <NonZeroNumberToken> | <Hex10to15Token>)+
+}
