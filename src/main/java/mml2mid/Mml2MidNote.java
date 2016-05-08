@@ -8,32 +8,38 @@ import static java.lang.String.*;
 public class Mml2MidNote {
     private int note;
     private int length;
+    private int vel;
 
-    public Mml2MidNote(char scale, char accidental, int octave, int length) {
+    public Mml2MidNote(char scale, char accidental, int octave, int length, int vel) {
         this.note = scaleName2noteNumber(scale, accidental, octave);
         this.length = lengthMml2Mid(length);
+        this.vel = vel;
     }
 
 
+    // TODO: テンポに合わせて長さを修正
+    // 現状は 120BPM
+    // TODO: MidiPlayer用に特化している
     private int lengthMml2Mid(int length) {
+        final double fourth = 2;
         switch(length) {
             case 1:
-                return 1920;
+                return (int) (4000 / fourth);
             case 2:
-                return 960;
+                return (int) (2000 / fourth);
             case 4:
-                return 480;
+                return (int) (1000 / fourth);
             case 8:
-                return 240;
+                return (int) (500 / fourth);
             case 16:
-                return 120;
+                return (int) (250 / fourth);
             case 32:
-                return 60;
+                return (int) (125 / fourth);
             default:
-                return 480;
+                return (int) (1000 / fourth);
         }
     }
-    private int scaleName2noteNumber(char scale, int accidental, int octave) {
+    private int scaleName2noteNumber(char scale, char accidental, int octave) {
         int note;
         int baseNoteNum;
 
@@ -52,9 +58,8 @@ public class Mml2MidNote {
         }
 
         switch(accidental) {
-            case -1 : baseNoteNum--; break;
-            case 0  : break;
-            case 1  : baseNoteNum++; break;
+            case '-' : baseNoteNum--; break;
+            case '+' : baseNoteNum++; break;
             default : break;
         }
 

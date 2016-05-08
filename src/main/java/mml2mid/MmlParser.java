@@ -17,21 +17,23 @@ public class MmlParser implements MmlParserVisitor{
     @Ignore
     @Override
     public Object visit(ASTSetOctave node, Object data) {
-        char scale = (char)node.jjtGetChild(0).jjtAccept(this, null);
-        char accidental = (char)node.jjtGetChild(1).jjtAccept(this, null);
-        int length = (int)node.jjtGetChild(2).jjtAccept(this, null);
-        String dots = node.jjtGetChild(3).jjtAccept(this, null).toString();
         return null;
     }
 
     @Override
     public Object visit(ASTSetScale node, Object data) {
-        return null;
+        char scale = (char)node.jjtGetChild(0).jjtAccept(this, null);
+        char accidental = (char)node.jjtGetChild(1).jjtAccept(this, null);
+        int length = (int)node.jjtGetChild(2).jjtAccept(this, null);
+        String dots = node.jjtGetChild(3).jjtAccept(this, null).toString();
+        return new Mml2MidNote(scale, accidental, length, currentOctave, 100);
     }
 
     @Override
     public Object visit(ASTSetRest node, Object data) {
-        return null;
+        int length = (int)node.jjtGetChild(1).jjtAccept(this, null);
+        String dots = node.jjtGetChild(2).jjtAccept(this, null).toString();
+        return new Mml2MidNote('c', ' ', 0, length, 0);
     }
 
     @Override
