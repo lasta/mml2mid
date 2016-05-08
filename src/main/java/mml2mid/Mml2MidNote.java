@@ -5,7 +5,7 @@ import static java.lang.String.*;
 /**
  * Created by lasta on 2016/05/09.
  */
-public class Mml2MidNote {
+public class Mml2MidNote extends MidNote{
     private int note;
     private int length;
     private int vel;
@@ -23,7 +23,7 @@ public class Mml2MidNote {
     private int lengthMml2Mid(int length) {
         final double fourth = 2;
         switch(length) {
-            case 1:
+            case 1
                 return (int) (4000 / fourth);
             case 2:
                 return (int) (2000 / fourth);

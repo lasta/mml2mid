@@ -3,6 +3,7 @@ package mml2mid;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import gnu.getopt.Getopt;
+import mml2mid.parser.ParseException;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedReader;
@@ -14,6 +15,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
+import mml2mid.parser.MmlParser;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,11 +27,6 @@ public class Main {
 
         /* MMLファイルをListに変換 */
         List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
-        for(String line : INPUT_MML) {
-            MmlParser mmlParser = new MmlParser(line);
-        }
-
-
     }
 
     /**
