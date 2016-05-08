@@ -1,6 +1,7 @@
 /tmp/
 /bin/
 *.test
+test.mid
 
 # OSX generated files #
 .DS_Store
