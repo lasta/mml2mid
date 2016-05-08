@@ -2,6 +2,9 @@ package mml2mid;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import mml2mid.parser.*;
 
+import static mml2mid.parser.MmlParserConstants.*;
+import static mml2mid.parser.MmlParserTreeConstants.JJTMMLCOMMANDS;
+
 /**
  * Created by lasta on 2016/05/09.
  */
@@ -67,4 +70,5 @@ public class MmlParser implements MmlParserVisitor {
         String value = node.nodeValue;
         return Integer.valueOf(value);
     }
+
 }

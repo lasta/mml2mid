@@ -26,7 +26,7 @@ public class Main {
         final Path OUTPUT_FILE_PATH = Paths.get(arguments.get("Output"));
 
         /* MMLファイルをListに変換 */
-        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
+//        List<String> INPUT_MML = loadFile(INPUT_FILE_PATH);
     }
 
     /**
@@ -40,9 +40,12 @@ public class Main {
         List<String> lines = Lists.newArrayList();
 
         try (BufferedReader br = Files.newBufferedReader(path)) {
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
+            while (br.readLine() != null) {
+                MmlParser mmlParser = new MmlParser(br);
+                mmlParser.Command();
             }
+        } catch (ParseException e) {
+            e.printStackTrace();
         } catch (MalformedInputException e) {
             System.out.println("バイナリファイルが入力されました");
             System.out.println("テキストファイルを指定してください");
