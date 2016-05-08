@@ -30,9 +30,9 @@ public class MidiPlayer {
     /**
      * MidiSynthesizerのコンストラクタ
      *
-     * @param play_mode 同期方法
+     * @param playMode 同期方法
      */
-    public MidiPlayer(int play_mode) {
+    public MidiPlayer(int playMode) {
         try {
             synthesizer = MidiSystem.getSynthesizer();
             synthesizer.open();
@@ -43,7 +43,7 @@ public class MidiPlayer {
         maxChannel = channels.length;
         this.playMode = playMode;
 
-        if (play_mode == QUEUED) {
+        if (playMode == QUEUED) {
             notes = newLinkedBlockingQueue();
             startPlayer();
         }
@@ -243,5 +243,28 @@ public class MidiPlayer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void close() {
+        switch (playMode) {
+            case ASYNCHRONIZED:
+                if(player != null) {
+                    try {
+                        player.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case QUEUED:
+                playQueued(-1, 0, 0, 0);
+                try {
+                    player.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+        synthesizer.close();
     }
 }
