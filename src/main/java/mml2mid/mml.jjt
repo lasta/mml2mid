@@ -36,6 +36,9 @@ TOKEN:
     |   <LengthCommandToken : "l">
     |   <OctaveCommandToken : "o">
     |   <ScaleCommandToken : ["+","-"]>
+    |   <RestCommandToken : "r">
+    |   <IncreaseOctaveCommandToekn : "<">
+    |   <DecreaseOctaveCommandToken : ">">
 }
 
 //文法の定義
