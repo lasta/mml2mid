@@ -3,7 +3,7 @@
 Commands ::= Command
 
 Command ::= SetLength | SetOctave | SetScale | SetRest // notes
-    | IncreaseOctave | DecreaseOctave                   // change octave relatively
+    | IncreaseOctave | DecreaseOctave                    // change octave relatively
 
 SetLength ::= 'l' Length
 SetOctave ::= 'o' Octave
@@ -21,7 +21,7 @@ DecimalNumber ::= '0' | NonZeroNumber
 NonZeroNumber ::= '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 Hex10to15 ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f'
 Scale ::= 'c' | 'd' | 'e' | 'f' | 'g' | 'a' | 'b'
-Sharp ::= '#'
-Flat ::= 'b'
+Sharp ::= '+'
+Flat ::= '-'
 Octave ::= '2' | '3' | '4' | '5' | '6' | '7' | '8'
-Dot ::= '.' // 付点
+Dot ::= '.' // Dotted note
